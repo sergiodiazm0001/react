@@ -5,7 +5,12 @@
     "main": "index.js",
     "scripts": {
         "start": "parcel index.html",
-        "lint": "eslint --fix src/**/*.{js,jsx}"
+        "lint": "eslint --fix src/**/*.{js,jsx}",
+        "format": "prettier --write \"*.{js,jsx,json,css}\""
+    },
+    "prettier": {
+        "trailingComma":"all",
+        "singleQuote":true
     },
     "author": "Sergio Díaz Morgado",
     "license": "ISC",
@@ -32,6 +37,22 @@
         }
     },
     "lint-staged": {
-        "src/**/*.{js,jsx}":["npm run lint"]
+        "src/**/*.{js,jsx}":["npm run lint"],
+        "src/**/*.{js,jsx,json,css,scss}":[
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "eslintConfig":{
+        "extends":"airbnb",
+        "env":{
+            "browser":true
+        },
+        "rules":{
+            "linebreak-style":"off"
+        }
+    },
+    "prettier":{
+        "semi":true
     }
 }
