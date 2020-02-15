@@ -5,11 +5,16 @@
     "main": "index.js",
     "scripts": {
         "start": "parcel index.html",
-        "lint":"eslint --fix src/**/*.{js,jsx}"
+        "lint": "eslint --fix src/**/*.{js,jsx}"
     },
     "author": "Sergio Díaz Morgado",
     "license": "ISC",
     "dependencies": {
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "husky": "^4.2.3",
+        "lint-staged": "^10.0.7",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
         "yarn": "^1.22.0"
@@ -20,5 +25,13 @@
         "eslint": "^6.8.0",
         "eslint-plugin-react": "^7.18.3",
         "parcel-bundler": "^1.12.4"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit":"lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx}":["npm run lint"]
     }
 }
